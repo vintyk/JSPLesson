@@ -18,6 +18,7 @@ public class personServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        req.setAttribute("persons", createPersons());
         req.setAttribute("person", getServletContext().getAttribute("person"));
         if (!(getServletContext().getAttribute("person") == null)) {
             req.setAttribute("message", "- МОЛОДЕЦ!");
@@ -39,7 +40,7 @@ public class personServlet extends HttpServlet {
         resp.sendRedirect("/person");
     }
 
-    private List<Person> createPerson() {
+    private List<Person> createPersons() {
         Person person1 = new Person("Виталий", "Ушаков");
         Person person2 = new Person("Ярик", "Зыскунов");
         Person person3 = new Person("Олег", "Гомеза");
