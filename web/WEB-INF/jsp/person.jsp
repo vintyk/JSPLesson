@@ -9,7 +9,7 @@
     <title>Person</title>
 </head>
 <body>
-<h1 style="color: #0071bc"> ${requestScope.person.name} ${requestScope.person.family}- молодец!!! </h1>
+<h1 style="color: #0071bc"> ${requestScope.person.name} ${requestScope.person.family}  ${requestScope.message} </h1>
 
 <form action="${pageContext.request.contextPath}/person" method="post">
     <label for="name">Введите имя</label>

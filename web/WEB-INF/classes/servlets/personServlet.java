@@ -19,6 +19,9 @@ public class personServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         req.setAttribute("person", getServletContext().getAttribute("person"));
+        if (!(getServletContext().getAttribute("person") == null)) {
+            req.setAttribute("message", "- МОЛОДЕЦ!");
+        }
         getServletContext()
                 .getRequestDispatcher("/WEB-INF/jsp/person.jsp")
                 .forward(req, resp);
