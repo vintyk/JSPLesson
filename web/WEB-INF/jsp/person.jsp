@@ -25,6 +25,8 @@
     <p>3) ${requestScope.persons}</p>
     <p>4) Имя: ${requestScope.persons.get(1).name}, Фамилия: ${requestScope.persons.get(1).family}</p>
 </c:if>
+
+<%--если коллекция не пустая. то вывести следующее...--%>
 <c:if test="${not empty requestScope.persons}">
     <p>---------------------- а теперь через цикл ---------------------</p>
     <%--что бы пронумеровать строки автоматически - завел переменную count--%>
