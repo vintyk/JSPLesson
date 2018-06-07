@@ -3,6 +3,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -39,13 +40,22 @@
     <c:forEach var="myPerson" items="${requestScope.persons}">
         <%--увеличиваю переменную count на 1, что бы потом вставить число вначале строки, пронумеровав ее.--%>
         <c:set var="count" value="${count+1}"/>
-        <p>${count} - Имя: ${myPerson.name}, Фамилия: ${myPerson.family}</p>
+        <h4>${count} - Имя: ${myPerson.name}, Фамилия: ${myPerson.family}</h4>
     </c:forEach>
 
     <%--а можно вывести 2-й и 3-й (с 1 до 2 исключая нулевой элемент)--%>
-    <c:forEach var="myPerson" begin="1" end="2">
-        <p>Имя: ${persons[myPerson].name}, Фамилия: ${persons[myPerson].family}</p>
-    </c:forEach>
+    <ul>
+        <c:forEach var="myPerson" begin="1" end="2">
+            <li><p style="color: #4c2c92"> Имя: ${persons[myPerson].name}, Фамилия: ${persons[myPerson].family}</p></li>
+        </c:forEach>
+    </ul>
+
+    <%--Сделаем все с маленькой буквы. Без Java--%>
+    <p style="color: #205493"> ${fn:toLowerCase("НИчеГО не ИзМенилоСь...")}</p>
+    <p>Первый элемент надо написать большими буквами. </p>
+    <p>Имя: ${fn:toUpperCase(persons.get(0).name)}</p>
+    <p>Фамилия: ${fn:toUpperCase(persons.get(0).family)}</p>
+    <p>Наша коллекция Persons содержит ${fn:length(persons)} элемента.</p>
 </c:if>
 </body>
 </html>
