@@ -41,6 +41,11 @@
         <c:set var="count" value="${count+1}"/>
         <p>${count} - Имя: ${myPerson.name}, Фамилия: ${myPerson.family}</p>
     </c:forEach>
+
+    <%--а можно вывести 2-й и 3-й (с 1 до 2 исключая нулевой элемент)--%>
+    <c:forEach var="myPerson" begin="1" end="2">
+        <p>Имя: ${persons[myPerson].name}, Фамилия: ${persons[myPerson].family}</p>
+    </c:forEach>
 </c:if>
 </body>
 </html>
