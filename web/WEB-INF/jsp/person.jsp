@@ -19,6 +19,7 @@
     <button type="submit">Отправить</button>
 </form>
 <p>----- Через переменную persons в которой коллекция объектов Person -----</p>
+<%--если коллекция не пустая. то вывести следующее...--%>
 <c:if test="${not empty requestScope.persons}">
     <p>1) ${requestScope.persons.get(0).name}</p>
     <p>2) ${requestScope.persons.get(0).getName()}</p>
