@@ -11,6 +11,75 @@
     <title>Person</title>
 </head>
 <body>
+
+<div class="preview preview-no_border grid-example grid-text">
+
+    <div class="usa-grid">
+        <div class="usa-width-one-half">
+            <h3>One Half</h3>
+            <h1>${requestScope.mega}</h1>
+
+            <div class="usa-input-grid usa-input-grid-medium">
+                <select>
+                    <c:forEach var="elementHero" items="${requestScope.myBestHeros}">
+                        <option>${elementHero.getNameHero()} ${elementHero.age}</option>
+                    </c:forEach>
+                </select>
+            </div>
+
+
+            <h1 style="color: #0071bc"> ${requestScope.person.name} ${requestScope.person.family} ${requestScope.message} </h1>
+
+            <form action="${pageContext.request.contextPath}/person" method="post">
+                <label for="name">Введите имя</label>
+                <input type="text" id="name" name="name2Attr">
+                <label for="family">Введите Фамилию</label>
+                <input type="text" id="family" name="family2Attr">
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+        <div class="usa-width-one-half">
+            <h3>One Half</h3>
+            <table class="usa-table-borderless">
+                <caption>Таблица Героев</caption>
+                <tr>
+                    <th>Имя</th>
+                    <th>Возраст</th>
+                </tr>
+                <c:forEach var="elementHero" items="${requestScope.myBestHeros}">
+                    <tr>
+                        <td>${elementHero.getNameHero()} </td>
+                        <td>${elementHero.age}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+    </div>
+    <label for="input-type-textarea">Text area label</label>
+    <textarea id="input-type-textarea" name="input-type-textarea"></textarea>
+</div>
+<h1>${requestScope.mega}</h1>
+
+<select>
+    <c:forEach var="elementHero" items="${requestScope.myBestHeros}">
+        <option>${elementHero.getNameHero()} ${elementHero.age}</option>
+    </c:forEach>
+</select>
+
+<table class="usa-table-borderless">
+    <caption>Таблица Героев</caption>
+    <tr>
+        <th>Имя</th>
+        <th>Возраст</th>
+    </tr>
+    <c:forEach var="elementHero" items="${requestScope.myBestHeros}">
+        <tr>
+            <td>${elementHero.getNameHero()} </td>
+            <td>${elementHero.age}</td>
+        </tr>
+    </c:forEach>
+</table>
+
 <h1 style="color: #0071bc"> ${requestScope.person.name} ${requestScope.person.family} ${requestScope.message} </h1>
 
 <form action="${pageContext.request.contextPath}/person" method="post">
@@ -28,8 +97,8 @@
             <p>---в которой коллекция объектов Person--</p>
             <%--если коллекция не пустая. то вывести следующее...--%>
             <c:if test="${not empty requestScope.persons}">
-                <p>1) ${requestScope.persons.get(0).name}</p>
-                <p>2) ${requestScope.persons.get(0).getName()}</p>
+                <p>1) ${requestScope.persons.get(1).name} ${requestScope.persons.get(1).family}</p>
+                <p>2) ${requestScope.persons.get(0).getName()} ${requestScope.persons.get(0).getFamily()}</p>
                 <p>3) ${requestScope.persons}</p>
                 <p>4) Имя: ${requestScope.persons.get(1).name}, Фамилия: ${requestScope.persons.get(1).family}</p>
             </c:if>
