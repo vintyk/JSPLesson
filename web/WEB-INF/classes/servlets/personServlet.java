@@ -54,6 +54,7 @@ public class personServlet extends HttpServlet {
         }
         System.out.println(chkBoxMessage);
         getServletContext().setAttribute("myChkBoxRadioMsg", chkBoxMessage);
+
         getServletContext().setAttribute("IdFromSelect", mySelect1);
         System.out.println("В ниспадающем списке мы выбрали " + mySelect1 +
                 " - Его VALUE - это не то что на странице. " +

@@ -20,8 +20,8 @@
             <h1 style="color: #0071bc"> ${requestScope.person.name} ${requestScope.person.family} ${requestScope.message} </h1>
             <form action="${pageContext.request.contextPath}/person" method="post">
                 <h4> ${requestScope.myChkBoxRadioMsg}</h4>
-                <label class="usa-sr-only" for="myChkBox">Вид брони</label>
-                <ul class="usa-unstyled-list" id="myChkBox">
+                <label class="usa-sr-only" for="myChkRadioBox">Вид брони</label>
+                <ul class="usa-unstyled-list" id="myChkRadioBox">
                     <li>
                         <input id="truth" type="radio" name="chkBoxRadioArmor" value="1" checked>
                         <label for="truth">Тяжелая броня</label>
@@ -37,6 +37,26 @@
                     <li>
                         <input id="carver" type="radio" name="chkBoxRadioArmor" disabled>
                         <label for="carver">Магическая Роба</label>
+                    </li>
+                </ul>
+                <h4> ${requestScope.myChkBoxRadioMsg}</h4>
+                <label class="usa-sr-only" for="myChkBoxArmor">Вид брони</label>
+                <ul class="usa-unstyled-list" id="myChkBoxArmor">
+                    <li>
+                        <input id="chkBoxArmor1" type="checkbox" name="chkBoxArmor" value="1" checked>
+                        <label for="chkBoxArmor1">Тяжелая броня</label>
+                    </li>
+                    <li>
+                        <input id="chkBoxArmor2" type="checkbox" name="chkBoxArmor" value="2">
+                        <label for="chkBoxArmor2">Средняя броня</label>
+                    </li>
+                    <li>
+                        <input id="chkBoxArmor3" type="checkbox" name="chkBoxArmor" value="3">
+                        <label for="chkBoxArmor3">Легкая броня</label>
+                    </li>
+                    <li>
+                        <input id="chkBoxArmor4" type="checkbox" name="chkBoxArmor" disabled>
+                        <label for="chkBoxArmor4">Магическая Роба</label>
                     </li>
                 </ul>
 
