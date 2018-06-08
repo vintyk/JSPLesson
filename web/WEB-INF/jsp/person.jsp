@@ -7,20 +7,29 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="/css/uswds.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/uswds.css" type="text/css">
+    <script src="${pageContext.request.contextPath}/js/uswds.js"></script>
     <title>Person</title>
 </head>
 <body>
 
 <div class="preview preview-no_border grid-example grid-text">
-
+    <form class="usa-form">
+        <label for="options">Dropdown label</label>
+        <select name="options" id="options">
+            <option value>- Select -</option>
+            <option value="value1">Option A</option>
+            <option value="value2">Option B</option>
+            <option value="value3">Option C</option>
+        </select>
+    </form>
     <div class="usa-grid">
         <div class="usa-width-one-half">
             <h3>One Half</h3>
             <h1>${requestScope.mega}</h1>
 
             <div class="usa-input-grid usa-input-grid-medium">
-                <select>
+                <select class="usa-form">
                     <c:forEach var="elementHero" items="${requestScope.myBestHeros}">
                         <option>${elementHero.getNameHero()} ${elementHero.age}</option>
                     </c:forEach>
