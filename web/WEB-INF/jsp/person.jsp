@@ -17,11 +17,29 @@
         <div class="usa-width-one-half">
             <h3>One Half</h3>
             <h1>${requestScope.mega}</h1>
-
-
             <h1 style="color: #0071bc"> ${requestScope.person.name} ${requestScope.person.family} ${requestScope.message} </h1>
-
             <form action="${pageContext.request.contextPath}/person" method="post">
+                <h4> ${requestScope.myChkBoxRadioMsg}</h4>
+                <label class="usa-sr-only" for="myChkBox">Вид брони</label>
+                <ul class="usa-unstyled-list" id="myChkBox">
+                    <li>
+                        <input id="truth" type="radio" name="chkBoxRadioArmor" value="1" checked>
+                        <label for="truth">Тяжелая броня</label>
+                    </li>
+                    <li>
+                        <input id="douglass" type="radio" name="chkBoxRadioArmor" value="2">
+                        <label for="douglass">Средняя броня</label>
+                    </li>
+                    <li>
+                        <input id="washington" type="radio" name="chkBoxRadioArmor" value="3">
+                        <label for="washington">Легкая броня</label>
+                    </li>
+                    <li>
+                        <input id="carver" type="radio" name="chkBoxRadioArmor" disabled>
+                        <label for="carver">Магическая Роба</label>
+                    </li>
+                </ul>
+
                 <%--Ниспадающий список мы должны поместить в ФОРМУ, что бы по нажатию SUBMIT--%>
                 <%--ЗНАЧЕНИЕ (Value)- попало в req.getParameter----%>
                 <%--НЕ то, что написано в ниспадающем списке, а то, чему оно равно при выборе--%>
@@ -40,6 +58,7 @@
                 <label for="family">Введите Фамилию</label>
                 <input type="text" id="family" name="family2Attr">
                 <button type="submit">Отправить</button>
+
             </form>
         </div>
         <div class="usa-width-one-half">
@@ -57,6 +76,7 @@
                     </tr>
                 </c:forEach>
             </table>
+
         </div>
     </div>
     <label for="input-type-textarea">Text area label</label>

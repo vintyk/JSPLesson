@@ -25,8 +25,9 @@ public class personServlet extends HttpServlet {
         if (!(getServletContext().getAttribute("person") == null)) {
             myReq.setAttribute("message", "- МОЛОДЕЦ!");
         }
-        myReq.setAttribute("myBestHeros",  getHeroes());
+        myReq.setAttribute("myBestHeros", getHeroes());
         myReq.setAttribute("IdFromSelect", getServletContext().getAttribute("IdFromSelect"));
+        myReq.setAttribute("myChkBoxRadioMsg", getServletContext().getAttribute("myChkBoxRadioMsg"));
         getServletContext()
                 .getRequestDispatcher("/WEB-INF/jsp/person.jsp")
                 .forward(myReq, myResp);
@@ -35,6 +36,24 @@ public class personServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest myReq, HttpServletResponse resp) throws ServletException, IOException {
         String mySelect1 = myReq.getParameter("mySelect1");
+        String chkBoxRadioArmor = myReq.getParameter("chkBoxRadioArmor");
+        String chkBoxMessage = "";
+        switch (chkBoxRadioArmor) {
+            case "1":
+                chkBoxMessage = "В радио чекбоксе выбрано значение " + chkBoxRadioArmor;
+                break;
+            case "2":
+                chkBoxMessage = "В радио чекбоксе выбрано значение " + chkBoxRadioArmor;
+                break;
+            case "3":
+                chkBoxMessage = "В радио чекбоксе выбрано значение " + chkBoxRadioArmor;
+                break;
+            default:
+                chkBoxMessage = "В радио чекбоксе ARMOR - ничего не выбрано";
+                break;
+        }
+        System.out.println(chkBoxMessage);
+        getServletContext().setAttribute("myChkBoxRadioMsg", chkBoxMessage);
         getServletContext().setAttribute("IdFromSelect", mySelect1);
         System.out.println("В ниспадающем списке мы выбрали " + mySelect1 +
                 " - Его VALUE - это не то что на странице. " +
