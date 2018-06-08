@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class Hero {
+    private Long id;
     private String nameHero;
     private int age;
 }

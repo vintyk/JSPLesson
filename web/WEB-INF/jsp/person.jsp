@@ -12,36 +12,31 @@
     <title>Person</title>
 </head>
 <body>
-
 <div class="preview preview-no_border grid-example grid-text">
-    <form class="usa-form">
-        <label for="options">Dropdown label</label>
-        <select name="options" id="options">
-            <option value>- Select -</option>
-            <option value="value1">Option A</option>
-            <option value="value2">Option B</option>
-            <option value="value3">Option C</option>
-        </select>
-    </form>
     <div class="usa-grid">
         <div class="usa-width-one-half">
             <h3>One Half</h3>
             <h1>${requestScope.mega}</h1>
 
-            <div class="usa-input-grid usa-input-grid-medium">
-                <select class="usa-form">
-                    <c:forEach var="elementHero" items="${requestScope.myBestHeros}">
-                        <option>${elementHero.getNameHero()} ${elementHero.age}</option>
-                    </c:forEach>
-                </select>
-            </div>
-
 
             <h1 style="color: #0071bc"> ${requestScope.person.name} ${requestScope.person.family} ${requestScope.message} </h1>
 
             <form action="${pageContext.request.contextPath}/person" method="post">
-                <label for="name">Введите имя</label>
-                <input type="text" id="name" name="name2Attr">
+                <%--Ниспадающий список мы должны поместить в ФОРМУ, что бы по нажатию SUBMIT--%>
+                <%--ЗНАЧЕНИЕ (Value)- попало в req.getParameter----%>
+                <%--НЕ то, что написано в ниспадающем списке, а то, чему оно равно при выборе--%>
+                <%--по дефолту - это значение просто по порядку--%>
+                <div class="usa-input-grid usa-input-grid-medium">
+                    <h4>Вы выбрали ID = ${requestScope.IdFromSelect}</h4>
+                    <select class="usa-form" name="mySelect1">
+                        <c:forEach var="elementHero" items="${requestScope.myBestHeros}">
+                            <option value="${elementHero.id}">${elementHero.getNameHero()} ${elementHero.age}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <br>
+                <label for="name1">Введите имя</label>
+                <input type="text" id="name1" name="name2Attr">
                 <label for="family">Введите Фамилию</label>
                 <input type="text" id="family" name="family2Attr">
                 <button type="submit">Отправить</button>
@@ -68,29 +63,12 @@
     <textarea id="input-type-textarea" name="input-type-textarea"></textarea>
 </div>
 <h1>${requestScope.mega}</h1>
-
 <select>
     <c:forEach var="elementHero" items="${requestScope.myBestHeros}">
         <option>${elementHero.getNameHero()} ${elementHero.age}</option>
     </c:forEach>
 </select>
-
-<table class="usa-table-borderless">
-    <caption>Таблица Героев</caption>
-    <tr>
-        <th>Имя</th>
-        <th>Возраст</th>
-    </tr>
-    <c:forEach var="elementHero" items="${requestScope.myBestHeros}">
-        <tr>
-            <td>${elementHero.getNameHero()} </td>
-            <td>${elementHero.age}</td>
-        </tr>
-    </c:forEach>
-</table>
-
 <h1 style="color: #0071bc"> ${requestScope.person.name} ${requestScope.person.family} ${requestScope.message} </h1>
-
 <form action="${pageContext.request.contextPath}/person" method="post">
     <label for="name">Введите имя</label>
     <input type="text" id="name" name="name2Attr">
@@ -99,7 +77,6 @@
     <button type="submit">Отправить</button>
 </form>
 <div class="preview preview-no_border grid-example grid-text">
-
     <div class="usa-grid">
         <div class="usa-width-one-half">
             <p>------- Через переменную persons -------</p>
@@ -126,7 +103,6 @@
                     <c:set var="count" value="${count+1}"/>
                     <h4>${count} - Имя: ${myPerson.name}, Фамилия: ${myPerson.family}</h4>
                 </c:forEach>
-
                 <%--а можно вывести 2-й и 3-й (с 1 до 2 исключая нулевой элемент)--%>
                 <ul>
                     <c:forEach var="myPerson" begin="1" end="2">
@@ -134,7 +110,6 @@
                             Фамилия: ${persons[myPerson].family}</p></li>
                     </c:forEach>
                 </ul>
-
                 <%--Сделаем все с маленькой буквы. Без Java--%>
                 <p style="color: #205493"> ${fn:toLowerCase("НИчеГО не ИзМенилоСь...")}</p>
                 <p>Первый элемент надо написать большими буквами. </p>
@@ -144,6 +119,5 @@
             </c:if>
         </div>
         <%--если коллекция не пустая. то вывести следующее...--%>
-
 </body>
 </html>

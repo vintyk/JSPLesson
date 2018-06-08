@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -26,43 +25,26 @@ public class personServlet extends HttpServlet {
         if (!(getServletContext().getAttribute("person") == null)) {
             myReq.setAttribute("message", "- МОЛОДЕЦ!");
         }
-        myReq.setAttribute("myBestHeros", getHeroes());
-
+        myReq.setAttribute("myBestHeros",  getHeroes());
+        myReq.setAttribute("IdFromSelect", getServletContext().getAttribute("IdFromSelect"));
         getServletContext()
                 .getRequestDispatcher("/WEB-INF/jsp/person.jsp")
                 .forward(myReq, myResp);
     }
 
-    private List<Hero> getHeroes() {
-        Hero hero = new Hero("Aragorn", 33);
-        Hero hero1 = new Hero("Aragory", 35);
-        Hero hero2 = new Hero("Aragoryyyn", 37);
-        Hero hero3 = new Hero("AragorUuiin", 93);
-        Hero hero4 = new Hero("Aragorn4", 36);
-        Hero hero5 = new Hero("Aragorng", 38);
-        Hero hero6 = new Hero("Aragorn444", 39);
-        Hero hero7 = new Hero("Aragorn777", 12);
-        Hero hero8 = new Hero("Aragorn8899", 32);
-        List<Hero> heroes = new ArrayList<>();
-        heroes.add(hero);
-        heroes.add(hero1);
-        heroes.add(hero2);
-        heroes.add(hero3);
-        heroes.add(hero4);
-        heroes.add(hero5);
-        heroes.add(hero6);
-        heroes.add(hero7);
-        heroes.add(hero8);
-        return heroes;
-    }
-
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest myReq, HttpServletResponse resp) throws ServletException, IOException {
+        String mySelect1 = myReq.getParameter("mySelect1");
+        getServletContext().setAttribute("IdFromSelect", mySelect1);
+        System.out.println("В ниспадающем списке мы выбрали " + mySelect1 +
+                " - Его VALUE - это не то что на странице. " +
+                "Как правило ставят ID - что бы его потом отправить " +
+                "в базу и по этому ID найти строку.");
         resp.setContentType("text/html; charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
         Person person = new Person();
-        person.setName((String) req.getParameter("name2Attr"));
-        person.setFamily((String) req.getParameter("family2Attr"));
+        person.setName((String) myReq.getParameter("name2Attr"));
+        person.setFamily((String) myReq.getParameter("family2Attr"));
         System.out.println("POST заполнил Person: " + person);
         getServletContext().setAttribute("person", person);
         resp.sendRedirect("/person");
@@ -79,5 +61,28 @@ public class personServlet extends HttpServlet {
         personList.add(person3);
         personList.add(person4);
         return personList;
+    }
+
+    private List<Hero> getHeroes() {
+        Hero hero = new Hero(1L, "Aragorn", 33);
+        Hero hero1 = new Hero(2L, "Aragory", 35);
+        Hero hero2 = new Hero(3L, "Aragoryyyn", 37);
+        Hero hero3 = new Hero(4L, "AragorUuiin", 93);
+        Hero hero4 = new Hero(5L, "Aragorn4", 36);
+        Hero hero5 = new Hero(6L, "Aragorng", 38);
+        Hero hero6 = new Hero(7L, "Aragorn444", 39);
+        Hero hero7 = new Hero(8L, "Aragorn777", 12);
+        Hero hero8 = new Hero(9L, "Aragorn8899", 32);
+        List<Hero> heroes = new ArrayList<>();
+        heroes.add(hero);
+        heroes.add(hero1);
+        heroes.add(hero2);
+        heroes.add(hero3);
+        heroes.add(hero4);
+        heroes.add(hero5);
+        heroes.add(hero6);
+        heroes.add(hero7);
+        heroes.add(hero8);
+        return heroes;
     }
 }
