@@ -12,6 +12,7 @@
     <title>Person</title>
 </head>
 <body>
+<p id="msg"></p>
 <div class="preview preview-no_border grid-example grid-text">
     <div class="usa-grid">
         <div class="usa-width-one-half">
@@ -112,9 +113,9 @@
 <form action="${pageContext.request.contextPath}/person" method="post">
     <label for="name">Введите имя</label>
     <input type="text" id="name" name="name2Attr">
-    <label for="family">Введите Фамилию</label>
-    <input type="text" id="family" name="family2Attr">
-    <button type="submit">Отправить</button>
+    <label for="family1">Введите Фамилию</label>
+    <input type="text" id="family1" name="family2Attr">
+    <button type="submit" onclick="printByJS()">Отправить</button>
 </form>
 <div class="preview preview-no_border grid-example grid-text">
     <div class="usa-grid">

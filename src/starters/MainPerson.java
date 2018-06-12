@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-public class MainPerson {
+class MainPerson {
     public static void main(String[] args) {
 
             Person person = new Person();
