@@ -15,6 +15,7 @@
     <div class="usa-grid">
         <div class="usa-width-one-whole">
             <%--<form action="${pageContext.request.contextPath}/jqueryExample">--%>
+            <h2 id="JsonFromBackEnd"></h2>
             <label for="data-input">First name</label>
             <input id="data-input" name="first-name" type="text" required aria-required="true">
             <label for="data-input2">Family</label>

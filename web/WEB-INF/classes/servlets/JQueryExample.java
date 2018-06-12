@@ -22,14 +22,20 @@ public class JQueryExample extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        System.out.println(req.getReader().lines().collect(Collectors.joining("\n")));
-        try {
-            Gson gson = new Gson();
-            String jsonStr = req.getReader().lines().collect(Collectors.joining("\n"));
-            PersonDto personDto =
-                    gson.fromJson(jsonStr, PersonDto.class);
-            System.out.println(personDto);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        Gson gson = new Gson();
+        String jsonStr = req.getReader().lines().collect(Collectors.joining("\n"));
+        PersonDto personDto =
+                gson.fromJson(jsonStr, PersonDto.class);
+        System.out.println(personDto);
+
+        resp.setContentType("application/json");
+        PersonDto outPersonDto = new PersonDto();
+        outPersonDto.setName("Vinty");
+        outPersonDto.setFamily("Ushakov");
+        String outPersonString = gson.toJson(outPersonDto);
+        //То что мы завишем в респонс таким образом
+        //придет в метод done(data) - из респонса
+        // в AJAX
+        resp.getWriter().write(outPersonString);
     }
 }

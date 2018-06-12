@@ -32,5 +32,9 @@ function sendInputDataToServer() {
             name: name,
             family: family
         })
-    })
+    }).done(function(dataFromResponce) {
+        // $("#JsonFromBackEnd").text(dataFromResponce.name + " " + dataFromResponce.family);
+        let el = document.getElementById("JsonFromBackEnd");
+        el.innerText = dataFromResponce.name + " " + dataFromResponce.family;
+    });
 }
